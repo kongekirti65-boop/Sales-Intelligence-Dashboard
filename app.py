@@ -7,9 +7,9 @@ app = Flask(__name__)
 # Find the project folders
 
 # Find the project folders
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-FRONTEND_DIR = os.path.join(BASE_DIR, "frontend floder")
+FRONTEND_DIR = BASE_DIR
 
 
 
