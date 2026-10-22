@@ -7,15 +7,13 @@ import pandas as pd
 # ==========================================
 
 BASE_DIR = os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__))
+    os.path.abspath(__file__)
 )
 
 DATA_FILE = os.path.join(
     BASE_DIR,
-    "data",
     "Sample - Superstore.csv"
 )
-
 
 # ==========================================
 # LOAD AND CLEAN SALES DATA
