@@ -1,0 +1,1321 @@
+
+/* =========================================
+   1. GLOBAL SETTINGS — PEACH & CREAM
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #fff9f4;
+    --sidebar: #fff0e6;
+    --card: #ffffff;
+    --card-hover: #fffaf6;
+    --border: #f0dfd4;
+
+    --text-primary: #59443d;
+    --text-secondary: #907d74;
+
+    --peach: #f1b69b;
+    --peach-dark: #d98f73;
+    --blush: #f8d9d0;
+    --cream: #fff4e8;
+
+    --purple: #c4a4d8;
+    --cyan: #e9a994;
+    --green: #719b7c;
+    --red: #d87972;
+
+    --shadow: 0 6px 24px rgba(145, 101, 77, 0.06);
+    --shadow-hover: 0 12px 30px rgba(145, 101, 77, 0.11);
+
+    --radius-card: 17px;
+    --radius-control: 10px;
+
+    --transition: 0.25s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 25px;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 85% 0%,
+            rgba(255, 218, 199, 0.45),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 0% 100%,
+            rgba(255, 232, 216, 0.38),
+            transparent 30%
+        ),
+        var(--background);
+
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(217, 143, 115, 0.35);
+    outline-offset: 3px;
+}
+
+/* =========================================
+   2. DASHBOARD LAYOUT
+========================================= */
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 34px 36px 24px;
+}
+
+/* =========================================
+   3. SIDEBAR
+========================================= */
+
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px 18px 22px;
+
+    background: linear-gradient(
+        180deg,
+        #fff0e6 0%,
+        #fff7f1 55%,
+        #fff2e9 100%
+    );
+
+    border-right: 1px solid var(--border);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 8px;
+    margin-bottom: 44px;
+}
+
+.brand-symbol {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #f5c3a8,
+        #e99d91
+    );
+
+    font-size: 24px;
+    color: #ffffff;
+
+    box-shadow: 0 5px 13px rgba(220, 145, 115, 0.2);
+    transition: transform var(--transition);
+}
+
+.brand-symbol:hover {
+    transform: rotate(-5deg) scale(1.04);
+}
+
+.sidebar-brand h2 {
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+    color: #59443d;
+}
+
+.sidebar-brand h2 span {
+    color: #d58c72;
+}
+
+.sidebar-brand p {
+    margin-top: 5px;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: #a18b7f;
+}
+
+.sidebar-section-title {
+    margin: 0 10px 15px;
+
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 1.7px;
+
+    color: #b59b8c;
+}
+
+.sidebar-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 13px 14px;
+
+    text-decoration: none;
+    color: #927e73;
+
+    font-size: 13px;
+    font-weight: 550;
+
+    border: 1px solid transparent;
+    border-radius: 11px;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition),
+        border-color var(--transition);
+}
+
+.nav-icon {
+    width: 20px;
+    flex-shrink: 0;
+
+    text-align: center;
+    font-size: 19px;
+}
+
+.nav-item:hover {
+    color: #8c5748;
+    background: rgba(244, 190, 165, 0.22);
+    transform: translateX(3px);
+}
+
+.nav-item.active {
+    color: #8b5547;
+
+    background: linear-gradient(
+        110deg,
+        #f9d8c7,
+        #fbe9df
+    );
+
+    border-color: #f0d0c0;
+    box-shadow: 0 4px 12px rgba(211, 151, 120, 0.08);
+}
+
+.nav-item.active .nav-icon {
+    color: #d58b70;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 30px;
+}
+
+.sidebar-status {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 15px 10px;
+    margin-bottom: 16px;
+
+    border: 1px solid #f0dfd4;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: #7eaa86;
+
+    box-shadow: 0 0 8px rgba(126, 170, 134, 0.25);
+}
+
+.sidebar-status p {
+    margin-bottom: 5px;
+    font-size: 11px;
+    color: #695249;
+}
+
+.sidebar-status div > span {
+    font-size: 9px;
+    color: #a18c80;
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+    text-decoration: none;
+
+    font-size: 12px;
+    color: #927e73;
+
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+.logout-button span {
+    font-size: 18px;
+}
+
+.logout-button:hover {
+    background: #fce6e1;
+    color: #bd6e67;
+}
+
+/* =========================================
+   4. TOP BAR
+========================================= */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.breadcrumb {
+    margin-bottom: 11px;
+
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 1.8px;
+
+    color: #d58e73;
+}
+
+.page-heading h1 {
+    font-size: clamp(25px, 2.4vw, 34px);
+    font-weight: 750;
+    letter-spacing: -1px;
+    line-height: 1.25;
+
+    color: #59443d;
+}
+
+.page-description {
+    margin-top: 9px;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    color: #927e73;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 13px;
+
+    border: 1px solid #efddd1;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    color: #88756b;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #f5c4a8,
+        #df9c91
+    );
+
+    border: 1px solid #edc5b1;
+
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 750;
+
+    box-shadow: 0 4px 12px rgba(211, 145, 119, 0.16);
+}
+
+/* =========================================
+   5. FILTER PANEL
+========================================= */
+
+.filter-panel {
+    padding: 24px;
+    margin-bottom: 26px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+
+    box-shadow: var(--shadow);
+
+    transition: box-shadow var(--transition);
+}
+
+.filter-panel:hover {
+    box-shadow: 0 8px 27px rgba(145, 101, 77, 0.08);
+}
+
+.filter-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.filter-heading h3 {
+    font-size: 14px;
+    font-weight: 750;
+    color: #654c41;
+}
+
+.filter-heading p {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.reset-button {
+    padding: 9px 13px;
+
+    background: #fffaf6;
+    border: 1px solid #efddd1;
+    border-radius: 9px;
+
+    color: #967d70;
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: all var(--transition);
+}
+
+.reset-button:hover {
+    border-color: #e9b39a;
+    color: #b9755e;
+    background: #fff0e7;
+}
+
+.filter-controls {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(100px, 1fr)) auto;
+    align-items: end;
+    gap: 13px;
+}
+
+.filter-group {
+    min-width: 0;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 9px;
+
+    font-size: 11px;
+    font-weight: 650;
+    color: #876f63;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    min-width: 0;
+    height: 43px;
+
+    padding: 0 11px;
+
+    background: #fffaf6;
+    border: 1px solid #ead9ce;
+    border-radius: var(--radius-control);
+
+    color: #654c41;
+    font-family: inherit;
+    font-size: 11px;
+
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+.filter-group input {
+    color-scheme: light;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: #e7a88c;
+    background: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(239, 181, 155, 0.17);
+}
+
+.apply-button {
+    min-height: 43px;
+    padding: 0 19px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        110deg,
+        #efb69a,
+        #eaa18f
+    );
+
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 750;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    box-shadow: 0 4px 10px rgba(216, 147, 116, 0.15);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+}
+
+.apply-button:hover {
+    transform: translateY(-2px);
+    filter: saturate(1.05);
+
+    box-shadow: 0 7px 17px rgba(216, 147, 116, 0.24);
+}
+
+.apply-button:active {
+    transform: translateY(0);
+}
+
+/* =========================================
+   6. SUMMARY METRIC CARDS
+========================================= */
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+
+    margin-bottom: 27px;
+}
+
+.metric-card {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+
+    padding: 23px 21px;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #fffaf6 100%
+    );
+
+    border: 1px solid #f0dfd4;
+    border-radius: var(--radius-card);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.metric-card::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 18px;
+    right: 18px;
+
+    height: 3px;
+
+    border-radius: 0 0 5px 5px;
+
+    background: linear-gradient(
+        90deg,
+        #f3c7b0,
+        #e9a99b,
+        #f6d8c8
+    );
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    border-color: #edc9b6;
+    box-shadow: var(--shadow-hover);
+}
+
+.metric-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 23px;
+}
+
+.metric-label {
+    font-size: 12px;
+    font-weight: 650;
+    color: #927b6f;
+}
+
+.metric-icon {
+    width: 37px;
+    height: 37px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sales-icon {
+    background: #fce7dc;
+    color: #c77f62;
+}
+
+.profit-icon {
+    background: #e9f3e8;
+    color: #6e9b78;
+}
+
+.orders-icon {
+    background: #fce6e9;
+    color: #c87f91;
+}
+
+.quantity-icon {
+    background: #fff0d9;
+    color: #c69752;
+}
+
+.metric-card h2 {
+    margin-bottom: 12px;
+
+    font-size: clamp(20px, 2vw, 28px);
+    font-weight: 750;
+    letter-spacing: -0.8px;
+    line-height: 1.3;
+
+    color: #59443d;
+    overflow-wrap: anywhere;
+}
+
+.metric-description {
+    font-size: 10px;
+    line-height: 1.7;
+    color: #a08a7e;
+}
+
+.metric-highlight {
+    color: #719b7c;
+}
+
+/* =========================================
+   7. CHART GRID
+========================================= */
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 21px;
+
+    margin-bottom: 27px;
+}
+
+.chart-card {
+    min-width: 0;
+    padding: 24px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
+}
+
+.chart-card:hover {
+    border-color: #eac8b6;
+    box-shadow: var(--shadow-hover);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+
+    margin-bottom: 24px;
+}
+
+.chart-header h3 {
+    font-size: 14px;
+    font-weight: 750;
+    color: #654c41;
+}
+
+.chart-header p {
+    margin-top: 7px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #a08a7e;
+}
+
+.chart-badge,
+.table-badge {
+    padding: 7px 10px;
+    flex-shrink: 0;
+
+    border: 1px solid #f1d9cb;
+    border-radius: 8px;
+
+    background: linear-gradient(
+        110deg,
+        #fff0e5,
+        #fce8e4
+    );
+
+    color: #b97d65;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: 0.8px;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 275px;
+}
+
+.category-chart-container {
+    height: 275px;
+}
+
+/* =========================================
+   8. TOP PRODUCTS TABLE
+========================================= */
+
+.table-card {
+    min-width: 0;
+    padding: 24px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+
+    box-shadow: var(--shadow);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 23px;
+}
+
+.table-header h3 {
+    font-size: 14px;
+    font-weight: 750;
+    color: #654c41;
+}
+
+.table-header p {
+    margin-top: 7px;
+    font-size: 11px;
+    color: #a08a7e;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    text-align: left;
+}
+
+thead {
+    background: #fff4ec;
+}
+
+th {
+    padding: 15px 14px;
+
+    color: #a18a7e;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+td {
+    padding: 16px 14px;
+
+    border-bottom: 1px solid #f3e8e0;
+
+    color: #786258;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: #fff9f4;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+td:first-child {
+    color: #c78165;
+    font-weight: 700;
+}
+
+.loading-cell {
+    text-align: center;
+    color: #a08a7e;
+}
+
+/* =========================================
+   9. PROFIT INTELLIGENCE
+========================================= */
+
+#profit-intelligence {
+    color: var(--text-primary);
+}
+
+#profit-intelligence h2,
+#profit-intelligence h3 {
+    color: #654c41;
+}
+
+#profit-intelligence p {
+    color: #927e73;
+}
+
+#profit-intelligence table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+#profit-intelligence thead {
+    background: #fff4ec;
+}
+
+#profit-intelligence th {
+    color: #a18a7e;
+}
+
+#profit-intelligence td {
+    color: #786258;
+    border-bottom: 1px solid #f3e8e0;
+}
+
+#profit-intelligence tbody tr:hover {
+    background: #fff9f4;
+}
+
+#profit-intelligence td:first-child {
+    color: #c78165;
+}
+
+#profit-intelligence td[style*="color: #f87171"],
+#profit-intelligence td[style*="color:#f87171"] {
+    color: #c96e68 !important;
+}
+
+/* =========================================
+   10. SALES PERFORMANCE INSIGHTS
+========================================= */
+
+#sales-performance-insights {
+    margin-top: 38px;
+    margin-bottom: 35px;
+}
+
+.insights-heading {
+    margin-bottom: 24px;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+
+    margin-top: 24px;
+}
+
+.insight-card {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+
+    padding: 23px 20px;
+
+    background: linear-gradient(
+        145deg,
+        #fffdfb,
+        #fff7f0
+    );
+
+    border: 1px solid #f1dfd2;
+    border-radius: var(--radius-card);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.insight-card::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+
+    height: 3px;
+
+    border-radius: 0 0 5px 5px;
+
+    background: linear-gradient(
+        90deg,
+        #f5c8ad,
+        #e9a99b
+    );
+}
+
+.insight-card:hover {
+    transform: translateY(-4px);
+    border-color: #edc9b6;
+    box-shadow: var(--shadow-hover);
+}
+
+.insight-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.insight-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fce8dc;
+    border-radius: 13px;
+
+    font-size: 21px;
+}
+
+.insight-label {
+    color: #997968;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 0.8px;
+    line-height: 1.6;
+}
+
+.insight-card h2 {
+    margin: 0 0 12px;
+
+    color: #573d32;
+    font-size: 22px;
+    font-weight: 750;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.insight-description {
+    margin: 0;
+
+    color: #94796b;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+#monthlySalesTrend {
+    font-size: 20px;
+}
+
+/* =========================================
+   11. FOOTER
+========================================= */
+
+.dashboard-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 28px;
+    padding: 20px 0 5px;
+
+    border-top: 1px solid var(--border);
+}
+
+.dashboard-footer p {
+    font-size: 9px;
+    letter-spacing: 0.6px;
+    color: #a18b7f;
+}
+
+.dashboard-footer span {
+    color: #ce8c71;
+}
+
+/* =========================================
+   12. RESPONSIVE — LAPTOPS
+========================================= */
+
+@media (max-width: 1250px) {
+    .sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+    .main-content {
+        padding: 30px 24px;
+    }
+
+    .metrics-grid,
+    .insights-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filter-controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .apply-button {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   13. RESPONSIVE — TABLETS
+========================================= */
+
+@media (max-width: 850px) {
+    .sidebar {
+        width: 190px;
+        min-width: 190px;
+        padding: 23px 12px;
+    }
+
+    .sidebar-brand {
+        gap: 9px;
+        padding: 0 4px;
+    }
+
+    .sidebar-brand h2 {
+        font-size: 16px;
+    }
+
+    .sidebar-brand p {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .main-content {
+        padding: 25px 18px;
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .topbar-right {
+        gap: 10px;
+    }
+
+    .live-indicator {
+        padding: 9px;
+    }
+
+    .chart-card,
+    .table-card,
+    .filter-panel {
+        padding: 20px;
+    }
+}
+
+/* =========================================
+   14. RESPONSIVE — MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+    .dashboard-layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+
+        padding: 17px 18px;
+
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-brand {
+        margin-bottom: 20px;
+    }
+
+    .sidebar-bottom {
+        padding-top: 18px;
+    }
+
+    .main-content {
+        padding: 23px 15px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .topbar-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .metrics-grid,
+    .insights-grid,
+    .filter-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-heading,
+    .table-header {
+        align-items: flex-start;
+    }
+
+    .filter-panel,
+    .chart-card,
+    .table-card {
+        padding: 18px;
+    }
+
+    .chart-container,
+    .category-chart-container {
+        height: 250px;
+    }
+
+    .metric-card {
+        padding: 21px;
+    }
+
+    .metric-card h2 {
+        font-size: 25px;
+    }
+
+    .insight-card {
+        padding: 21px;
+    }
+
+    .dashboard-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* =========================================
+   15. REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================
+   FINAL LAYOUT REFINEMENTS
+========================================= */
+
+/* Consistent spacing between dashboard sections */
+
+#sales-overview {
+    scroll-margin-top: 25px;
+}
+
+.charts-grid {
+    scroll-margin-top: 25px;
+}
+
+#regional-section,
+#product-section,
+#profit-intelligence,
+#sales-performance-insights {
+    scroll-margin-top: 25px;
+}
+
+/* Clear visual separation between major sections */
+
+#sales-performance-insights {
+    padding-top: 10px;
+}
+
+#profit-intelligence {
+    margin-top: 38px;
+    scroll-margin-top: 25px;
+}
+
+/* Keep long product names readable */
+
+.table-wrapper td:nth-child(2) {
+    min-width: 180px;
+    overflow-wrap: anywhere;
+}
+
+/* Improve navigation click experience */
+
+.nav-item,
+.logout-button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent cards from causing horizontal overflow */
+
+.metric-card,
+.chart-card,
+.insight-card,
+.table-card {
+    min-width: 0;
+}
+
+/* Respect smaller screens */
+
+@media (max-width: 600px) {
+    #sales-performance-insights,
+    #profit-intelligence {
+        margin-top: 28px;
+    }
+}

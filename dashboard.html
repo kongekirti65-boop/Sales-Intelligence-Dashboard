@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sales Analytics Dashboard</title>
+
+    <link rel="stylesheet" href="/dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-symbol">✦</div>
+
+                <div>
+                    <h2>Sales<span>Space</span></h2>
+                    <p>ANALYTICS PLATFORM</p>
+                </div>
+            </div>
+
+            <div class="sidebar-section-title">
+                WORKSPACE
+            </div>
+
+            <nav class="sidebar-navigation">
+
+                <a href="#dashboard-top" class="nav-item active">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#sales-overview" class="nav-item">
+                    <span class="nav-icon">↗</span>
+                    <span>Sales Overview</span>
+                </a>
+
+                <a href="#product-section" class="nav-item">
+                    <span class="nav-icon">◈</span>
+                    <span>Products</span>
+                </a>
+
+                <a href="#regional-section" class="nav-item">
+                    <span class="nav-icon">◎</span>
+                    <span>Regions</span>
+                </a>
+
+                <a href="#profit-intelligence" class="nav-item">
+                    <span class="nav-icon">⚠</span>
+                    <span>Profit Intelligence</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-status">
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <p>System Status</p>
+                        <span>Dashboard Connected</span>
+                    </div>
+                </div>
+
+                <a href="/" class="logout-button">
+                    <span>↩</span>
+                    Back to Login
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content" id="dashboard-top">
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div class="page-heading">
+                    <p class="breadcrumb">WORKSPACE / ANALYTICS</p>
+
+                    <h1>Sales Dashboard</h1>
+
+                    <p class="page-description">
+                        Explore your business performance and sales trends.
+                    </p>
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="live-indicator">
+                        <span class="status-dot"></span>
+                        Live Data
+                    </div>
+
+                    <div class="profile-avatar">SA</div>
+
+                </div>
+
+            </header>
+
+
+            <!-- FILTERS -->
+
+            <section class="filter-panel">
+
+                <div class="filter-heading">
+
+                    <div>
+                        <h3>Filter Your Data</h3>
+
+                        <p>
+                            Customize the information displayed below.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="resetFilters"
+                        class="reset-button"
+                    >
+                        Reset Filters
+                    </button>
+
+                </div>
+
+                <div class="filter-controls">
+
+                    <div class="filter-group">
+
+                        <label for="categoryFilter">
+                            Category
+                        </label>
+
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                        </select>
+
+                    </div>
+
+                    <div class="filter-group">
+
+                        <label for="regionFilter">
+                            Region
+                        </label>
+
+                        <select id="regionFilter">
+                            <option value="">All Regions</option>
+                        </select>
+
+                    </div>
+
+                    <div class="filter-group">
+
+                        <label for="startDate">
+                            Start Date
+                        </label>
+
+                        <input type="date" id="startDate">
+
+                    </div>
+
+                    <div class="filter-group">
+
+                        <label for="endDate">
+                            End Date
+                        </label>
+
+                        <input type="date" id="endDate">
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="applyFilters"
+                        class="apply-button"
+                    >
+                        Apply Filters
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- SUMMARY CARDS -->
+
+            <section class="metrics-grid" id="sales-overview">
+
+                <article class="metric-card">
+
+                    <div class="metric-top">
+                        <span class="metric-label">Total Sales</span>
+                        <span class="metric-icon sales-icon">↗</span>
+                    </div>
+
+                    <h2 id="totalSales">Loading...</h2>
+
+                    <p class="metric-description">
+                        <span class="metric-highlight">Revenue</span>
+                        generated from orders
+                    </p>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <div class="metric-top">
+                        <span class="metric-label">Total Profit</span>
+                        <span class="metric-icon profit-icon">₹</span>
+                    </div>
+
+                    <h2 id="totalProfit">Loading...</h2>
+
+                    <p class="metric-description">
+                        <span class="metric-highlight">Profit</span>
+                        earned from sales
+                    </p>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <div class="metric-top">
+                        <span class="metric-label">Total Orders</span>
+                        <span class="metric-icon orders-icon">▤</span>
+                    </div>
+
+                    <h2 id="totalOrders">Loading...</h2>
+
+                    <p class="metric-description">
+                        Number of distinct orders
+                    </p>
+
+                </article>
+
+
+                <article class="metric-card">
+
+                    <div class="metric-top">
+                        <span class="metric-label">Units Sold</span>
+                        <span class="metric-icon quantity-icon">◫</span>
+                    </div>
+
+                    <h2 id="totalQuantity">Loading...</h2>
+
+                    <p class="metric-description">
+                        Total quantity of products sold
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- SALES CHARTS -->
+
+            <section class="charts-grid">
+
+                <article class="chart-card large-chart">
+
+                    <div class="chart-header">
+
+                        <div>
+                            <h3>Sales Trend</h3>
+                            <p>Monthly revenue performance</p>
+                        </div>
+
+                        <span class="chart-badge">MONTHLY</span>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="salesTrendChart"></canvas>
+                    </div>
+
+                </article>
+
+
+                <article class="chart-card">
+
+                    <div class="chart-header">
+
+                        <div>
+                            <h3>Sales by Category</h3>
+                            <p>Revenue across categories</p>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-container category-chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+
+                </article>
+
+
+                <article class="chart-card" id="regional-section">
+
+                    <div class="chart-header">
+
+                        <div>
+                            <h3>Regional Performance</h3>
+                            <p>Sales across business regions</p>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="regionChart"></canvas>
+                    </div>
+
+                </article>
+
+
+                <article class="chart-card" id="product-section">
+
+                    <div class="chart-header">
+
+                        <div>
+                            <h3>Top Products</h3>
+                            <p>Five products ranked by sales</p>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="productChart"></canvas>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- TOP PERFORMING PRODUCTS TABLE -->
+
+            <section class="table-card">
+
+                <div class="table-header">
+
+                    <div>
+                        <h3>Top Performing Products</h3>
+
+                        <p>
+                            Products generating the highest revenue
+                        </p>
+                    </div>
+
+                    <span class="table-badge">TOP 5</span>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>RANK</th>
+                                <th>PRODUCT NAME</th>
+                                <th>TOTAL SALES</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="topProductsTable">
+
+                            <tr>
+                                <td colspan="3" class="loading-cell">
+                                    Loading product information...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+<!-- ===================================== -->
+<!-- SALES PERFORMANCE INSIGHTS -->
+<!-- ===================================== -->
+
+<section id="sales-performance-insights">
+
+    <div class="page-heading insights-heading">
+
+        <p class="breadcrumb">
+            BUSINESS ANALYTICS / PERFORMANCE
+        </p>
+
+        <h1>Sales Performance Insights</h1>
+
+        <p class="page-description">
+            Discover key business trends and performance
+            highlights based on your selected data.
+        </p>
+
+    </div>
+
+    <div class="insights-grid">
+
+        <!-- INSIGHT 1: TOP SALES CATEGORY -->
+
+        <article class="insight-card">
+
+            <div class="insight-card-top">
+                <span class="insight-icon">🏆</span>
+                <span class="insight-label">TOP SALES CATEGORY</span>
+            </div>
+
+            <h2 id="topSalesCategory">Loading...</h2>
+
+            <p class="insight-description">
+                <span id="topSalesCategoryValue">Calculating...</span>
+                in total sales.
+            </p>
+
+        </article>
+
+
+        <!-- INSIGHT 2: BEST REGION -->
+
+        <article class="insight-card">
+
+            <div class="insight-card-top">
+                <span class="insight-icon">🌍</span>
+                <span class="insight-label">BEST-PERFORMING REGION</span>
+            </div>
+
+            <h2 id="bestRegion">Loading...</h2>
+
+            <p class="insight-description">
+                <span id="bestRegionSales">Calculating...</span>
+                in regional sales.
+            </p>
+
+        </article>
+
+
+        <!-- INSIGHT 3: MOST PROFITABLE CATEGORY -->
+
+        <article class="insight-card">
+
+            <div class="insight-card-top">
+                <span class="insight-icon">💰</span>
+                <span class="insight-label">MOST PROFITABLE CATEGORY</span>
+            </div>
+
+            <h2 id="mostProfitableCategory">Loading...</h2>
+
+            <p class="insight-description">
+                <span id="mostProfitableCategoryProfit">
+                    Calculating...
+                </span>
+                in total profit.
+            </p>
+
+        </article>
+
+
+        <!-- INSIGHT 4: MONTHLY SALES TREND -->
+
+        <article class="insight-card">
+
+            <div class="insight-card-top">
+                <span class="insight-icon">📈</span>
+                <span class="insight-label">MONTHLY SALES TREND</span>
+            </div>
+
+            <h2 id="monthlySalesTrend">Loading...</h2>
+
+            <p class="insight-description">
+                <span id="monthlySalesChange">
+                    Calculating...
+                </span>
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+            <!-- ===================================== -->
+            <!-- ADD-ON FEATURE 1: PROFIT INTELLIGENCE -->
+            <!-- ===================================== -->
+
+            <section id="profit-intelligence">
+
+                <div class="page-heading" style="margin-top: 35px; margin-bottom: 22px;">
+
+                    <p class="breadcrumb">
+                        ADVANCED ANALYTICS / ADD-ON FEATURE
+                    </p>
+
+                    <h1>Profit Intelligence</h1>
+
+                    <p class="page-description">
+                        Identify loss-making products and investigate
+                        potential profitability problems.
+                    </p>
+
+                </div>
+
+
+                <!-- PROFIT INTELLIGENCE SUMMARY -->
+
+                <section class="metrics-grid">
+
+                    <article class="metric-card">
+
+                        <div class="metric-top">
+
+                            <span class="metric-label">
+                                Loss-Making Products
+                            </span>
+
+                            <span class="metric-icon orders-icon">
+                                !
+                            </span>
+
+                        </div>
+
+                        <h2 id="lossProductCount">Loading...</h2>
+
+                        <p class="metric-description">
+                            Products with negative total profit
+                        </p>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-top">
+
+                            <span class="metric-label">
+                                Combined Product Losses
+                            </span>
+
+                            <span class="metric-icon sales-icon">
+                                ↓
+                            </span>
+
+                        </div>
+
+                        <h2 id="totalProductLosses">Loading...</h2>
+
+                        <p class="metric-description">
+                            Combined losses across loss-making products
+                        </p>
+
+                    </article>
+
+                </section>
+
+
+                <!-- LOSS-MAKING PRODUCTS TABLE -->
+
+                <section class="table-card" style="margin-top: 25px;">
+
+                    <div class="table-header">
+
+                        <div>
+                            <h3>Loss-Making Products Detector</h3>
+
+                            <p>
+                                The ten products with the largest
+                                total losses.
+                            </p>
+                        </div>
+
+                        <span class="table-badge">
+                            TOP 10 LOSSES
+                        </span>
+
+                    </div>
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>RANK</th>
+                                    <th>PRODUCT NAME</th>
+                                    <th>TOTAL SALES</th>
+                                    <th>TOTAL LOSS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="lossProductsTable">
+
+                                <tr>
+                                    <td colspan="4" class="loading-cell">
+                                        Loading loss-making products...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="dashboard-footer">
+
+                <p>
+                    SALESSPACE <span>•</span>
+                    SALES ANALYTICS DASHBOARD
+                </p>
+
+                <p>
+                    Business insights through data analysis.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- CHART.JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- DASHBOARD JAVASCRIPT -->
+
+    <script src="/dashboard.js"></script>
+
+</body>
+
+</html>
